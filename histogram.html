@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+	<title>Histogram</title>
+	<link rel="stylesheet" type="text/css" href="histogram.css"/>
+	<script src="calculate.js"></script>
+</head>
+<body onload="init()">
+	<header>
+		<h1>Histogram Generator</h1>
+		<form action = "#" method="post">
+			<input id="fileInput" type="file" name="file" hidden>
+			<label for="fileInput">Choose file</label>
+			<span id="fileTitle">No file chosen</span>
+		</form>
+		<p id="error"></p>
+	</header>
+	<main>
+		<fieldset class="first">
+			<h3>Lower Bounds</h3>
+			<table id="mainTable">
+				<tr>
+					<td><label for="max">Max</label></td>
+					<td><input onchange= "border()" type="number" min="95.01"  step="0.01" id="max" value="100.00" ></td>
+				</tr>
+				<tr>
+					<td><label for="aplus">A+</label></td>
+					<td><input onchange= "border()" type="number" min="90.01"  max="99.99" step="0.01" id="aplus" value="95.00"></td>
+				</tr>
+				<tr>
+					<td><label for="a">A</label></td>
+					<td><input onchange= "border()" type="number" min="85.01" max="94.99" step="0.01" id="a" value="90.00"></td>
+				</tr>
+				<tr>
+					<td><label for="aminus">A-</label></td>
+					<td><input onchange= "border()" type="number" min="80.01" max="89.99" step="0.01" id="aminus" value="85.00"></td>
+				</tr>
+				<tr>
+					<td><label for="bplus">B+</label></td>
+					<td><input onchange= "border()" type="number" min="75.01" max="84.99" step="0.01" id="bplus" value="80.00"></td>
+				</tr>
+				<tr>
+					<td><label for="b">B</label></td>
+					<td><input onchange= "border()" type="number" min="70.01" max="79.99" step="0.01" id="b" value="75.00"></td>
+				</tr>
+				<tr>
+					<td><label for="bminus">B-</label></td>
+					<td><input onchange= "border()" type="number" min="65.01" max="74.99" step="0.01" id="bminus" value="70.00"></td>
+				</tr>
+
+				<tr>
+					<td><label for="cplus">C+</label></td>
+					<td><input onchange= "border()" type="number" min="60.01" max="69.99" step="0.01" id="cplus" value="65.00"></td>
+				</tr>
+				<tr>
+					<td><label for="c">C</label></td>
+					<td><input onchange= "border()" type="number" min="55.01" max="64.99" step="0.01" id="c" value="60.00"></td>
+				</tr>
+				<tr>
+					<td><label for="cminus">C-</label></td>
+					<td><input onchange= "border()" type="number" min="50.01" max="59.99" step="0.01" id="cminus" value="55.00"></td>
+				</tr>
+			
+				<tr>
+					<td><label for="d">D</label></td>
+					<td><input onchange= "border()" type="number" min="0.01" max="54.99" step="0.01" id="d" value="50.00"></td>
+				</tr>
+				<tr>
+					<td><label for="f">F</label></td>
+					<td><input onchange= "border()" type="number" min="0" max="49.99" step="0.01" id="f" value="0.00"></td>
+				</tr>
+			</table>
+		</fieldset>
+
+		<fieldset class="mid">
+			<h3>Histogram</h3>
+
+			<table id="drawTable">
+				<tr>
+					<td>Legend: 1 Person Length</td>
+					<td><p id="box"></p></td>
+				</tr>
+				<tr>
+					<td>A+</td>
+					<td><p id="box1"></p></td>
+				</tr>
+				<tr>
+					<td>A</td>
+					<td><p id="box2"></p></td>
+				</tr>
+				<tr>
+					<td>A-</td>
+					<td><p id="box3"></p></td>
+				</tr>
+				<tr>
+					<td>B+</td>
+					<td><p id="box4"></p></td>
+				</tr>
+				<tr>
+					<td>B</td>
+					<td><p id="box5"></p></td>
+				</tr>
+				<tr>
+					<td>B-</td>
+					<td><p id="box6"></p></td>
+				</tr>
+				<tr>
+					<td>C+</td>
+					<td><p id="box7"></p></td>
+				</tr>
+				<tr>
+					<td>C</td>
+					<td><p id="box8"></p></td>
+				</tr>
+				<tr>
+					<td>C-</td>
+					<td><p id="box9"></p></td>
+				</tr>
+				<tr>
+					<td>D</td>
+					<td><p id="box10"></p></td>
+				</tr>
+				<tr>
+					<td>F</td>
+					<td><p id="box11"></p></td>
+				</tr>
+			</table>
+			
+		</fieldset>
+		<fieldset class="last">
+			<h3>Stats</h3>
+			<table id="valueTable">
+				<tr>
+					<td>Highest</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Lowest</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Mean</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Median</td>
+					<td></td>
+				</tr>
+			</table>
+			
+		</fieldset>
+	</main>
+</body>
+</html>
